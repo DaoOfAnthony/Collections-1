@@ -15,8 +15,8 @@ public class MyQueue
     /**
      * Constructor for objects of class MyQueue
      */
-    public MyQueue(){
-        queue = new int[10];
+    public MyQueue() {
+        queue = new int[4];
         front = 0;
         back = 0;
         size = 0;
@@ -30,9 +30,9 @@ public class MyQueue
     public void enqueue(int element) {
         
         // If the array is not full then add element to the queue
-        if(!isFull()) {
+        if (!isFull()) {
             queue[back] = element;
-            back = back + 1 % queue.length;
+            back = (back + 1) % (queue.length);
             size++;
         }
         
@@ -46,9 +46,10 @@ public class MyQueue
     public int dequeue() {
         
         // If the queue is not empty, dequeue the front element
-        if(!isEmpty()) {
-            front++;
-            return front - 1;
+        if (!isEmpty()) {
+            front = (front + 1) % (queue.length);
+            size--;
+            return front;
         }
         
         return Integer.MIN_VALUE;
@@ -97,14 +98,16 @@ public class MyQueue
      */
     public String toString() {
         String contents = "";
-        int marker = front();
+        int totalBack = front + size; // back without the mod length
         
-        while (marker!=back) {
-            contents += queue[marker];
-            marker = marker + 1 % queue.length;
+        /* 
+         * Iteraties through the queue front to back and adds the 
+         * values to contents 
+         */
+        for (int i = front; i < totalBack; i++) {
+            contents += queue[i % queue.length] + " ";
         }
         
-        contents += queue[back];
         return contents;
     }
 }

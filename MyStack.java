@@ -25,8 +25,8 @@ public class MyStack
      */
     public void push(int element) {
         
-        // If the stack is not full add the element to the back
-        if(!isFull()){
+        // If the stack is not full add the element to the top
+        if (!isFull()){
             stack[size] = element;
             size++;
         }
@@ -38,7 +38,7 @@ public class MyStack
      * @return  element that was popped
      */
     public int pop() {
-        if(!isEmpty()){
+        if (!isEmpty()){
             size--;
             return stack[size];
         }
@@ -60,7 +60,7 @@ public class MyStack
      * @return  the location of the top
      */
     public int top() {
-        return size-1;
+        return size - 1;
     }
     
     /**
@@ -89,6 +89,10 @@ public class MyStack
     public String toString() {
         String contents = "";
         
+        /*
+         * iterates through the stack top to bottom and ads 
+         * each value to contents
+         */
         for (int i = size - 1; i >= 0; i--)
         {
             contents += stack[i] + " ";
@@ -97,18 +101,4 @@ public class MyStack
         return contents;
     }
     
-    public static void test() {
-        MyStack stack1 = new MyStack();
-        stack1.push(1);
-        stack1.push(2);
-        stack1.push(5);
-        System.out.println(stack1.pop());
-        System.out.println(stack1.size());
-        stack1.push(6);
-        stack1.push(6);
-        System.out.println(stack1.size());
-        System.out.println(stack1.pop());
-        System.out.println(stack1.isFull());
-        System.out.println(stack1.toString());
-    }
 }
