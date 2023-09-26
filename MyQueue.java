@@ -2,8 +2,8 @@
 /**
  * Write a description of class MyQueue here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Connor Jordan
+ * @version V1
  */
 public class MyQueue<E>
 {
@@ -32,12 +32,10 @@ public class MyQueue<E>
         // If the array is not full then add element to the queue
         if (!isFull()) {
             queue[back] = element;
-            back = (back + 1) % (queue.length);
+            back = (back + 1) % (queue.length); // handles wrap around to front of array
             size++;
-        }
-        else
-        {
-            E error = queue[-1];
+        } else {
+            E error = queue[-1]; // an error if the array is full
         }
         
     }
@@ -52,12 +50,13 @@ public class MyQueue<E>
         // If the queue is not empty, dequeue the front element
         if (!isEmpty()) {
             int temp = front;
-            front = (front + 1) % (queue.length);
+            
+            front = (front + 1) % (queue.length); // handles wrap around
             size--;
             return queue[temp];
         }
         
-        return queue[-1];
+        return queue[-1]; // an error if the array is empty
     }
     
     /**

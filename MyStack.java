@@ -2,8 +2,8 @@
 /**
  * Write a description of class MyStack here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Connor Jordan
+ * @version V1
  */
 public class MyStack<E>
 {
@@ -29,9 +29,8 @@ public class MyStack<E>
         if (!isFull()){
             stack[size] = element;
             size++;
-        }
-        else {
-            E error = stack[-1];
+        } else {
+            E error = stack[-1]; // an error if the array is full
         }
     }
     
@@ -45,7 +44,8 @@ public class MyStack<E>
             size--;
             return stack[size];
         }
-        return stack[-1];
+        
+        return stack[-1]; // an error if the array is empty
     }
     
     /**
