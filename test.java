@@ -8,7 +8,7 @@
 public class test
 {
     public static void testStack() {
-        MyStack stack1 = new MyStack();
+        MyStack<Integer> stack1 = new MyStack();
         stack1.push(1);
         stack1.push(2);
         stack1.push(5);

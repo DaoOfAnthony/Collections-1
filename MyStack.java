@@ -5,16 +5,16 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class MyStack
+public class MyStack<E>
 {
-    private int[] stack;
+    private E[] stack;
     private int size;
     
     /**
      * Constructor for objects of class MyStack
      */
     public MyStack() {
-        stack = new int[10];
+        stack = (E[]) new Object[10];
         size = 0;
     }
 
@@ -23,12 +23,15 @@ public class MyStack
      *
      * @param  element  the element to be pushed
      */
-    public void push(int element) {
+    public void push(E element) {
         
         // If the stack is not full add the element to the top
         if (!isFull()){
             stack[size] = element;
             size++;
+        }
+        else {
+            E error = stack[-1];
         }
     }
     
@@ -37,12 +40,12 @@ public class MyStack
      * 
      * @return  element that was popped
      */
-    public int pop() {
+    public E pop() {
         if (!isEmpty()){
             size--;
             return stack[size];
         }
-        return Integer.MIN_VALUE;
+        return stack[-1];
     }
     
     /**

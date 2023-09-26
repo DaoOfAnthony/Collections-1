@@ -5,9 +5,9 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class MyQueue
+public class MyQueue<E>
 {
-    private int[] queue;
+    private E[] queue;
     private int front;
     private int back;
     private int size;
@@ -16,7 +16,7 @@ public class MyQueue
      * Constructor for objects of class MyQueue
      */
     public MyQueue() {
-        queue = new int[4];
+        queue = (E[]) new Object[4];
         front = 0;
         back = 0;
         size = 0;
@@ -27,13 +27,17 @@ public class MyQueue
      *
      * @param  element  element to be enqueued
      */
-    public void enqueue(int element) {
+    public void enqueue(E element) {
         
         // If the array is not full then add element to the queue
         if (!isFull()) {
             queue[back] = element;
             back = (back + 1) % (queue.length);
             size++;
+        }
+        else
+        {
+            E error = queue[-1];
         }
         
     }
@@ -43,16 +47,17 @@ public class MyQueue
      * 
      * @return  dequed element
      */
-    public int dequeue() {
+    public E dequeue() {
         
         // If the queue is not empty, dequeue the front element
         if (!isEmpty()) {
+            int temp = front;
             front = (front + 1) % (queue.length);
             size--;
-            return front;
+            return queue[temp];
         }
         
-        return Integer.MIN_VALUE;
+        return queue[-1];
     }
     
     /**
@@ -69,7 +74,7 @@ public class MyQueue
      * 
      * @return  front element
      */
-    public int front() {
+    public E front() {
         return queue[front];
     }
     
