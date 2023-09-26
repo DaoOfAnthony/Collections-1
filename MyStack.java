@@ -63,7 +63,7 @@ public class MyStack<E>
      * @return  the location of the top
      */
     public int top() {
-        return size - 1;
+        return size--;
     }
     
     /**
