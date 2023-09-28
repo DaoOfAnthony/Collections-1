@@ -1,3 +1,5 @@
+import java.util.EmptyStackException;
+import java.util.NoSuchElementException;
 
 /**
  * Write a description of class MyStack here.
@@ -23,14 +25,14 @@ public class MyStack<E>
      *
      * @param  element  the element to be pushed
      */
-    public void push(E element) {
+    public void push(E element) throws NoSuchElementException {
         
         // If the stack is not full add the element to the top
         if (!isFull()){
             stack[size] = element;
             size++;
         } else {
-            E error = stack[-1]; // an error if the array is full
+            throw new NoSuchElementException(); // an error if the array is full
         }
     }
     
@@ -39,13 +41,17 @@ public class MyStack<E>
      * 
      * @return  element that was popped
      */
-    public E pop() {
+    public E pop() throws EmptyStackException {
         if (!isEmpty()){
+            E temp;
+            
             size--;
+            temp = stack[size];
+            stack[size] = null; // handles garbage colection
             return stack[size];
         }
         
-        return stack[-1]; // an error if the array is empty
+        throw new EmptyStackException(); // an error if the array is empty
     }
     
     /**

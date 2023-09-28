@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+import java.util.EmptyStackException;
 
 /**
  * Write a description of class MyQueue here.
@@ -27,7 +29,7 @@ public class MyQueue<E>
      *
      * @param  element  element to be enqueued
      */
-    public void enqueue(E element) {
+    public void enqueue(E element) throws NoSuchElementException {
         
         // If the array is not full then add element to the queue
         if (!isFull()) {
@@ -35,7 +37,7 @@ public class MyQueue<E>
             back = (back + 1) % (queue.length); // handles wrap around to front of array
             size++;
         } else {
-            E error = queue[-1]; // an error if the array is full
+            throw new NoSuchElementException(); // an error if the array is full
         }
         
     }
@@ -45,18 +47,19 @@ public class MyQueue<E>
      * 
      * @return  dequed element
      */
-    public E dequeue() {
+    public E dequeue() throws EmptyStackException{
         
         // If the queue is not empty, dequeue the front element
         if (!isEmpty()) {
-            int temp = front;
+            E temp = queue[front];
             
+            queue[front] = null; // haldles garbage collection
             front = (front + 1) % (queue.length); // handles wrap around
             size--;
-            return queue[temp];
+            return temp;
         }
         
-        return queue[-1]; // an error if the array is empty
+        throw new EmptyStackException(); // an error if the array is empty
     }
     
     /**
