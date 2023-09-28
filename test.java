@@ -7,6 +7,16 @@
  */
 public class test
 {
+    public static void testNode() {
+        MyLinkedList list = new MyLinkedList();
+        list.addHead(5);
+        list.addHead(4);
+        list.addTail(6);
+        System.out.println(list.toString());
+        list.removeHead();
+        System.out.println(list.toString());
+    }
+    
     public static void testStack() {
         MyStack<Integer> stack1 = new MyStack();
         stack1.push(1);
