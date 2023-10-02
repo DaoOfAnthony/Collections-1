@@ -8,13 +8,21 @@
 public class test
 {
     public static void testNode() {
-        MyLinkedList list = new MyLinkedList();
+        MyLinkedList<Integer> list = new MyLinkedList<Integer>();
+        System.out.println(list.isEmpty());
+        list.addTail(5);
         list.addHead(5);
         list.addHead(4);
+        System.out.println(list.size());
         list.addTail(6);
         System.out.println(list.toString());
         list.removeHead();
         System.out.println(list.toString());
+        System.out.println(list.isEmpty());
+        System.out.println(list.getHead());
+        list.removeHead();
+        list.removeHead();
+        list.getHead();
     }
     
     public static void testStack() {

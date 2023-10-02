@@ -2,7 +2,7 @@ import java.util.NoSuchElementException;
 import java.util.EmptyStackException;
 
 /**
- * Write a description of class MyQueue here.
+ * Creates a data structure using the queue format
  *
  * @author Connor Jordan
  * @version V1

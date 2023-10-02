@@ -1,45 +1,53 @@
 
 /**
- * Write a description of class Node here.
+ * A helper class for MyLinkedList that stores a data element and a pointer to
+ * the next node in the list
  *
  * @author Connor Jordan
  * @version V1
  */
-public class Node
+public class Node<E>
 {
-    // instance variables - replace the example below with your own
-    private int data;
-    Node next;
+    private E data;
+    Node<E> next;
 
     /**
      * Constructor for objects of class Node
      */
-    public Node(int data)
-    {
-        // initialise instance variables
+    public Node(E data) {
         this.data = data;
         this.next = null;
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * Reurns the data held in the node
      *
      * @return  data
      */
-    public int getData()
-    {
+    public E getData() {
         return data;
     }
     
-    public void setData(int newData) {
+    /**
+     * Sets the data held in the node
+     */
+    public void setData(E newData) {
         data = newData;
     }
     
-    public Node getNext() {
+    /**
+     * Returns the next node in the linked list
+     * 
+     * @return  next node
+     */
+    public Node<E> getNext() {
         return next;
     }
     
-    public void setNext(Node newNext) {
+    /**
+     * Sets the next node in the linked list
+     */
+    public void setNext(Node<E> newNext) {
         next = newNext;
     }
 }

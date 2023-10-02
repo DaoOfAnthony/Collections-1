@@ -2,7 +2,7 @@ import java.util.EmptyStackException;
 import java.util.NoSuchElementException;
 
 /**
- * Write a description of class MyStack here.
+ * Creates a data structure using the stack format
  *
  * @author Connor Jordan
  * @version V1

@@ -6,10 +6,10 @@ import java.util.NoSuchElementException;
  * @author Connor Jordan
  * @version V1
  */
-public class MyLinkedList
+public class MyLinkedList<E>
 {
     // instance variables - replace the example below with your own
-    private Node head;
+    private Node<E> head;
     private int size;
 
     /**
@@ -25,55 +25,91 @@ public class MyLinkedList
      *
      * @param  data  the data to be stored in the node
      */
-    public void addHead(int data) {
-        Node newNode = new Node(data);
+    public void addHead(E data) {
+        Node<E> newNode = new Node<E>(data);
         
         if(head == null) {
             head = newNode;
             size++;
         } else {
             newNode.setNext(head);
+            size++;
             head = newNode;
         }
     }
     
-    public void addTail(int data) {
-        if (head != null) {
-            Node newNode = new Node(data);
-        
-            Node currNode = head;
-        
+    /**
+     * Adds an element to the back of the linked list
+     */
+    public void addTail(E data) {
+        if (head == null) {
+            addHead(data);
+            size++;
+        } else {
+            Node<E> newNode = new Node<E>(data);
+            
+            size++;
+            Node<E> currNode = head;
             while(currNode.getNext() != null) {
                 currNode = currNode.getNext();
             }
         
             currNode.setNext(newNode);
-            size++;
         }
     }
     
+    /**
+     * Removes the first element in the linked list
+     */
     public void removeHead() throws NoSuchElementException {
         if (head == null) {
-            throw new NoSuchElementException();
-        }
-        else
-        {
+            throw new NoSuchElementException(); // handles error of empty list
+        } else {
             head = head.getNext();
+            size--;
         }
     }
     
-    public Node getHead() {
-        return head;
+    /**
+     * Returns the first elemnent in the linked list
+     * 
+     * @return  the head of the linked list
+     */
+    public E getHead() throws NoSuchElementException {
+        if(head == null) {
+            throw new NoSuchElementException(); // handles error of empty list
+        } else {
+            return head.getData();
+        }
     }
     
-    public int getSize() {
+    /**
+     * Checks to see if the array is empty
+     * 
+     * @return  if the array is empty
+     */
+    public boolean isEmpty() {
+        return size == 0;
+    }
+    
+    /**
+     * Returns the number of elements in the linked list
+     * 
+     * @return  the size of the linked list
+     */
+    public int size() {
         return size;
     }
     
+    /**
+     * Returns the contents of the linked list from head to tail
+     * 
+     * @return  toString
+     */
     public String toString() {
         String contents = "";
         
-        Node currNode = head;
+        Node<E> currNode = head;
         
         while (currNode.getNext() != null)
         {
