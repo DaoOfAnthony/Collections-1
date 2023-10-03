@@ -7,8 +7,7 @@ import java.util.EmptyStackException;
  * @author Connor Jordan
  * @version V1
  */
-public class MyQueue<E>
-{
+public class MyQueue<E> {
     private E[] queue;
     private int front;
     private int back;

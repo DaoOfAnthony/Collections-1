@@ -7,8 +7,7 @@ import java.util.NoSuchElementException;
  * @author Connor Jordan
  * @version V1
  */
-public class MyStack<E>
-{
+public class MyStack<E> {
     private E[] stack;
     private int size;
     
@@ -48,7 +47,7 @@ public class MyStack<E>
             size--;
             temp = stack[size];
             stack[size] = null; // handles garbage colection
-            return stack[size];
+            return temp;
         }
         
         throw new EmptyStackException(); // an error if the array is empty

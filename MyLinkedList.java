@@ -6,8 +6,7 @@ import java.util.NoSuchElementException;
  * @author Connor Jordan
  * @version V1
  */
-public class MyLinkedList<E>
-{
+public class MyLinkedList<E> {
     // instance variables - replace the example below with your own
     private Node<E> head;
     private int size;
@@ -44,7 +43,6 @@ public class MyLinkedList<E>
     public void addTail(E data) {
         if (head == null) {
             addHead(data);
-            size++;
         } else {
             Node<E> newNode = new Node<E>(data);
             
