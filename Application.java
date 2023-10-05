@@ -31,16 +31,64 @@ public class Application
         String openChars = "{([";
         String closedChars = "})]";
         
-        for (int i = 0; i<expression.length(); i++) {
+        for (int i = 0; i < expression.length(); i++) {
             if (openChars.indexOf(expression.charAt(i)) != -1) {
                 bracketHolder.push(expression.charAt(i));
-            }
-            if (closedChars.indexOf(expression.charAt(i)) != -1) {
-                if (!bracketHolder.pop().equals(expression.charAt(i))) {
+            } else if (closedChars.indexOf(expression.charAt(i)) != -1) {
+                if (bracketHolder.isEmpty()) {
                     return false;
+                }
+                else if (! (openChars.indexOf(bracketHolder.getHead()) == 
+                            closedChars.indexOf(expression.charAt(i)))) { // indexes are alligned
+                    return false;
+                } 
+                else
+                {
+                    bracketHolder.pop();
                 }
             }
         }
         return true;
+    }
+    
+    public MyQueueLL reverseData() {
+        Scanner scan = new Scanner(System.in);
+        String entered;
+        
+        System.out.println("Enter your sentence to be reversed");
+        entered = scan.nextLine();
+        return reverseData(entered);
+    }
+    
+    public MyQueueLL reverseData(String data) {
+        MyQueueLL<Character> holder = new MyQueueLL<Character>();
+        MyStackLL<Character> reversal = new MyStackLL<Character>();
+        
+        for (int i = 0; i < data.length(); i++) {
+            holder.enqueue(data.charAt(i));
+        }
+        
+        int size = holder.size();
+        
+        for (int i = 0; i < size; i++) {
+            reversal.push(holder.dequeue());
+        }
+        
+        for (int i = 0; i < size; i++) {
+            holder.enqueue(reversal.pop());
+        }
+        return holder;
+    }
+    
+    public int test1()
+    {
+        System.out.println(checkExpressions());
+        return 5;
+    }
+    
+    public int test2()
+    {
+        System.out.println(reverseData().toString());
+        return 3;
     }
 }
