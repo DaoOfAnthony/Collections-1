@@ -32,22 +32,26 @@ public class Application
         String closedChars = "})]";
         
         for (int i = 0; i < expression.length(); i++) {
-            if (openChars.indexOf(expression.charAt(i)) != -1) {
+            if (openChars.indexOf(expression.charAt(i)) != -1) { // is it an open bracket
                 bracketHolder.push(expression.charAt(i));
             } else if (closedChars.indexOf(expression.charAt(i)) != -1) {
                 if (bracketHolder.isEmpty()) {
                     return false;
                 }
-                else if (! (openChars.indexOf(bracketHolder.getHead()) == 
+                else if (! (openChars.indexOf(bracketHolder.top()) == 
                             closedChars.indexOf(expression.charAt(i)))) { // indexes are alligned
                     return false;
-                } 
-                else
-                {
+                } else {
                     bracketHolder.pop();
                 }
             }
         }
+        
+        if (!bracketHolder.isEmpty()) // check for leftover brackets
+        {
+            return false;
+        }
+        
         return true;
     }
     

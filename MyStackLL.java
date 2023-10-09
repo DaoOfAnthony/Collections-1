@@ -33,6 +33,7 @@ public class MyStackLL<E> {
      */
     public E pop() throws EmptyStackException {
         E temp = stack.getHead(); // to store head after it is removed
+        
         stack.removeHead();
         return temp;
     }
