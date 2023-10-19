@@ -9,6 +9,7 @@ import java.util.NoSuchElementException;
 public class MyLinkedList<E> {
     // instance variables - replace the example below with your own
     private Node<E> head;
+    private Node<E> tail;
     private int size;
 
     /**
@@ -16,8 +17,48 @@ public class MyLinkedList<E> {
      */
     public MyLinkedList() {
         head = null;
+        tail = null;
         size = 0;
     }
+    
+    /**
+     * Gets the node at the passed in index
+     * 
+     * @param  index  the index of the node to be fetched
+     * 
+     * @return  the node at the desegnated index
+     * 
+     * @throws  NoSuchElementException  if index is bigger than size or less
+     * than 0
+     */
+    public E get(int index) throws NoSuchElementException {
+        if (index < 0 || index > size()-1) {
+            Node<E> currNode = head;
+            
+            for (int i = 0; i<index; i++) {
+                currNode = currNode.getNext();
+            }
+            return currNode.getData();
+        } else {
+            throw new NoSuchElementException();
+        }
+    }
+     /**
+      * adds a node at the desegnated index
+      * 
+      * @param  index  the location to insert the node
+      * @param  element  the element type of the node
+      * 
+      * @throws  NoSuchElementException  if index is greater than size or less
+      * than 0
+      */
+    public void add(int index, E element) throws NoSuchElementException {
+        if(index < 0 || index >= size() + 1) {
+            
+        } else {
+            throw new NoSuchElementException();
+        }
+    }    
 
     /**
      * An example of a method - replace this comment with your own
@@ -29,6 +70,7 @@ public class MyLinkedList<E> {
         
         if(head == null) {
             head = newNode;
+            tail = newNode;
             size++;
         } else {
             newNode.setNext(head);
@@ -53,6 +95,25 @@ public class MyLinkedList<E> {
             }
         
             currNode.setNext(newNode);
+            tail = currNode.getNext();
+        }
+    }
+    
+    /**
+     * removes the node at the desegnated index
+     * 
+     * @param  index  the index at which to remove the node
+     * 
+     * @return  the removed node
+     * 
+     * @throws  NoSuchElementException  if index is greater than size of less
+     * than 0
+     */
+    public E remove(int index) throws NoSuchElementException {
+        if (index > size() - 1 || index < 0) {
+            
+        } else {
+            throw new NoSuchElementException();
         }
     }
     
