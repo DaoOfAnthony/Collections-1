@@ -6,7 +6,7 @@
  * @author Connor Jordan
  * @version V1
  */
-public class Node<E>
+public class Node<E extends Comparable <E>>
 {
     private E data;
     Node<E> next;

@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
  * @author Connor Jordan
  * @version V1
  */
-public class MyLinkedList<E> {
+public class MyLinkedList<E extends Comparable<E>> {
     // instance variables - replace the example below with your own
     private Node<E> head;
     private Node<E> tail;
@@ -33,40 +33,81 @@ public class MyLinkedList<E> {
      */
     public E get(int index) throws NoSuchElementException {
         if (index < 0 || index > size()-1) {
+            throw new NoSuchElementException();
+        } else {
             Node<E> currNode = head;
             
             for (int i = 0; i<index; i++) {
                 currNode = currNode.getNext();
             }
             return currNode.getData();
-        } else {
-            throw new NoSuchElementException();
         }
     }
-     /**
-      * adds a node at the desegnated index
-      * 
-      * @param  index  the location to insert the node
-      * @param  element  the element type of the node
-      * 
-      * @throws  NoSuchElementException  if index is greater than size or less
-      * than 0
-      */
-    public void add(int index, E element) throws NoSuchElementException {
-        if(index < 0 || index >= size() + 1) {
-            
-        } else {
+    
+    /**
+     * replaces existing element at specified index with specefied element
+     * 
+     * @param  index  the location of the node to set
+     * @param  element  the element to insert
+     * 
+     * @throws NoSuchElementException if index is greater than size of less 
+     * than 0
+     */
+    public void set(int index, E element) {
+        if (index > size()-1 || index<0) {
             throw new NoSuchElementException();
+        } else {
+            Node<E> currNode = head;
+            for(int i = 0; i<index; i++) {
+                currNode = currNode.getNext();
+            }
+            currNode.setData(element);
         }
-    }    
+    }
+    
+    /**
+    * adds a node at the desegnated index
+    * 
+    * @param  index  the location to insert the node
+    * @param  element  the element type of the node
+    * 
+    * @throws  NoSuchElementException  if index is greater than size or less
+    * than 0
+    */
+    public void add(int index, E element) {
+        if(index < 0 || index >= size() + 1) {
+            throw new NoSuchElementException();
+        } else if(index == 0) {
+            addHead(element);
+        } else if(index == size()-1) {
+            add(element);
+        } else {
+            Node<E> newNode = new Node<E>(element);
+            Node<E> currNode = head;
+            
+            for(int i = 0; i<index-1; i++) {
+                currNode = currNode.getNext();
+            }
+            newNode.setNext(currNode.getNext());
+            currNode.setNext(newNode);
+            size++;
+        }
+    }
+    
+    /**
+     * inserts an element into a sorted linked list
+     */
+    public void insertSorted(E element) {
+        
+    }
 
     /**
      * An example of a method - replace this comment with your own
      *
-     * @param  data  the data to be stored in the node
+     * @param  element  the data to be stored in the node
      */
-    public void addHead(E data) {
-        Node<E> newNode = new Node<E>(data);
+    public void addHead(E element) {
+        Node<E> newNode = new Node<E>(element);
         
         if(head == null) {
             head = newNode;
@@ -81,22 +122,29 @@ public class MyLinkedList<E> {
     
     /**
      * Adds an element to the back of the linked list
+     * 
+     * @param  element  the element to be added in the tail
      */
-    public void addTail(E data) {
+    public void addTail(E element) {
         if (head == null) {
-            addHead(data);
+            addHead(element);
         } else {
-            Node<E> newNode = new Node<E>(data);
+            Node<E> newNode = new Node<E>(element);
             
             size++;
-            Node<E> currNode = head;
-            while(currNode.getNext() != null) {
-                currNode = currNode.getNext();
-            }
+            tail.setNext(newNode);
+            tail = newNode;
         
-            currNode.setNext(newNode);
-            tail = currNode.getNext();
         }
+    }
+    
+    /**
+     * adds an element to the end of the linked list
+     * 
+     * @param  element  the element to be added
+     */
+    public void add(E element) {
+        addTail(element);
     }
     
     /**
@@ -109,23 +157,62 @@ public class MyLinkedList<E> {
      * @throws  NoSuchElementException  if index is greater than size of less
      * than 0
      */
-    public E remove(int index) throws NoSuchElementException {
+    public E remove(int index) {
         if (index > size() - 1 || index < 0) {
-            
-        } else {
             throw new NoSuchElementException();
+        } else if(index == 0) {
+            size--;
+            return removeHead();
+        } else {
+            Node<E> currNode = head;
+            
+            size--;
+            for(int i = 0; i<index-1; i++) {
+                currNode = currNode.getNext();
+            }
+            if(index == size()-1) {
+                tail = currNode;
+                Node<E> temp = currNode.getNext();
+                currNode.setNext(null);
+                return temp.getData();
+            } else {
+                Node<E> temp = currNode.getNext();
+                currNode.setNext(currNode.getNext().getNext());
+                temp.setNext(null);
+                return temp.getData();
+            }
         }
     }
     
     /**
-     * Removes the first element in the linked list
+     * removes and returns the first occurrence of the matching element
+     * 
+     * @return  Element  returns the first coccurence of the element
+     * 
+     * @throws  NoSuchElementException  if the element does not occurr in the
+     * linked list
      */
-    public void removeHead() throws NoSuchElementException {
+    public E remove(E element) {
+        Node<E> currNode = head;
+        while(!currNode.getData().equals(element)) {
+            currNode = currNode.getNext()//left off here
+        }
+        size--;
+    }
+    
+    /**
+     * Removes the first element in the linked list
+     * 
+     * @throws  NoSuchElementException  if the head is null
+     */
+    public E removeHead() {
         if (head == null) {
             throw new NoSuchElementException(); // handles error of empty list
         } else {
+            Node<E> temp = head;
             head = head.getNext();
             size--;
+            return temp.getData();
         }
     }
     
@@ -133,8 +220,10 @@ public class MyLinkedList<E> {
      * Returns the first elemnent in the linked list
      * 
      * @return  the head of the linked list
+     * 
+     * @throws  NoSuchElementException  if head is null
      */
-    public E getHead() throws NoSuchElementException {
+    public E getHead() {
         if(head == null) {
             throw new NoSuchElementException(); // handles error of empty list
         } else {

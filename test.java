@@ -41,14 +41,15 @@ public class test {
         System.out.println(stack1.toString());
     }
     
-    public static void testNode() {
+    public static void testLL() {
         MyLinkedList<Integer> list = new MyLinkedList<Integer>();
         System.out.println(list.isEmpty());
-        list.addTail(5);
+        list.add(5);
         list.addHead(5);
         list.addHead(4);
         System.out.println(list.size());
-        list.addTail(6);
+        list.add(6);
+        list.add(7);
         System.out.println(list.toString());
         list.removeHead();
         System.out.println(list.toString());
