@@ -32,12 +32,12 @@ public class MyLinkedList<E extends Comparable<E>> {
      * than 0
      */
     public E get(int index) throws NoSuchElementException {
-        if (index < 0 || index > size()-1) {
+        if (index < 0 || index > size() - 1) {
             throw new NoSuchElementException();
         } else {
             Node<E> currNode = head;
             
-            for (int i = 0; i<index; i++) {
+            for (int i = 0; i < index; i++) {
                 currNode = currNode.getNext();
             }
             return currNode.getData();
@@ -54,11 +54,11 @@ public class MyLinkedList<E extends Comparable<E>> {
      * than 0
      */
     public void set(int index, E element) {
-        if (index > size()-1 || index<0) {
+        if (index > size() - 1 || index < 0) {
             throw new NoSuchElementException();
         } else {
             Node<E> currNode = head;
-            for(int i = 0; i<index; i++) {
+            for(int i = 0; i < index; i++) {
                 currNode = currNode.getNext();
             }
             currNode.setData(element);
@@ -75,22 +75,22 @@ public class MyLinkedList<E extends Comparable<E>> {
     * than 0
     */
     public void add(int index, E element) {
-        if(index < 0 || index >= size() + 1) {
+        Node<E> currNode = head;
+        Node<E> newNode = new Node<E>(element);        
+        if (index >= size || index < 0) {
             throw new NoSuchElementException();
-        } else if(index == 0) {
+        }
+        for (int i = 0; i < index - 1; i++) {
+            currNode = currNode.getNext();
+        }
+        if (size == 0 || index == 0) {
             addHead(element);
-        } else if(index == size()-1) {
-            add(element);
+        } else if (index == size) {
+            addTail(element);
         } else {
-            Node<E> newNode = new Node<E>(element);
-            Node<E> currNode = head;
-            
-            for(int i = 0; i<index-1; i++) {
-                currNode = currNode.getNext();
-            }
+            size++;
             newNode.setNext(currNode.getNext());
             currNode.setNext(newNode);
-            size++;
         }
     }
     
@@ -98,7 +98,14 @@ public class MyLinkedList<E extends Comparable<E>> {
      * inserts an element into a sorted linked list
      */
     public void insertSorted(E element) {
+        Node<E> currNode = head;
+        int index = 0;
         
+        while (currNode != null && currNode.getData().compareTo(element) < 0) {
+            currNode = currNode.getNext();
+            index++;
+        }
+        add(index, element);
     }
 
     /**
@@ -109,7 +116,7 @@ public class MyLinkedList<E extends Comparable<E>> {
     public void addHead(E element) {
         Node<E> newNode = new Node<E>(element);
         
-        if(head == null) {
+        if (head == null) {
             head = newNode;
             tail = newNode;
             size++;
@@ -167,10 +174,10 @@ public class MyLinkedList<E extends Comparable<E>> {
             Node<E> currNode = head;
             
             size--;
-            for(int i = 0; i<index-1; i++) {
+            for (int i = 0; i<index-1; i++) {
                 currNode = currNode.getNext();
             }
-            if(index == size()-1) {
+            if (index == size() - 1) {
                 tail = currNode;
                 Node<E> temp = currNode.getNext();
                 currNode.setNext(null);
@@ -194,10 +201,16 @@ public class MyLinkedList<E extends Comparable<E>> {
      */
     public E remove(E element) {
         Node<E> currNode = head;
-        while(!currNode.getData().equals(element)) {
-            currNode = currNode.getNext()//left off here
+        int index = 0;
+        
+        while (currNode != null && currNode.getData().compareTo(element) != 0) {
+            currNode = currNode.getNext();
+            index++;
         }
-        size--;
+        if (currNode == null) {
+            return null;
+        }
+        return remove(index);
     }
     
     /**
@@ -209,10 +222,10 @@ public class MyLinkedList<E extends Comparable<E>> {
         if (head == null) {
             throw new NoSuchElementException(); // handles error of empty list
         } else {
-            Node<E> temp = head;
+            E temp = head.getData();
             head = head.getNext();
             size--;
-            return temp.getData();
+            return temp;
         }
     }
     
@@ -261,7 +274,7 @@ public class MyLinkedList<E extends Comparable<E>> {
         
         while (currNode.getNext() != null)
         {
-            contents += currNode.getData() + " ";
+            contents += currNode.getData() + ", ";
             currNode = currNode.getNext();
         }
         contents += currNode.getData();

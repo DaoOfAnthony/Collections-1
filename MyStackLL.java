@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
  * @author Connor Jordan
  * @version V1
  */
-public class MyStackLL<E> {
+public class MyStackLL<E extends Comparable<E>> {
     private MyLinkedList<E> stack;
     
     /**

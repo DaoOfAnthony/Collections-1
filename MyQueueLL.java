@@ -7,7 +7,7 @@ import java.util.EmptyStackException;
  * @author Connor Jordan
  * @version V1
  */
-public class MyQueueLL<E> {
+public class MyQueueLL<E extends Comparable<E>> {
     private MyLinkedList<E> queue;
 
     /**
