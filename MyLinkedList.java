@@ -76,7 +76,8 @@ public class MyLinkedList<E extends Comparable<E>> {
     */
     public void add(int index, E element) {
         Node<E> currNode = head;
-        Node<E> newNode = new Node<E>(element);        
+        Node<E> newNode = new Node<E>(element); 
+        
         if (index > size || index < 0) {
             throw new NoSuchElementException();
         }
@@ -281,6 +282,6 @@ public class MyLinkedList<E extends Comparable<E>> {
             }
             contents += currNode.getData();
         }
-            return contents;
+        return contents;
     }
 }
