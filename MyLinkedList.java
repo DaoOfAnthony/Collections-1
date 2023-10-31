@@ -273,14 +273,14 @@ public class MyLinkedList<E extends Comparable<E>> {
         String contents = "";
         
         Node<E> currNode = head;
-        
-        while (currNode.getNext() != null)
-        {
-            contents += currNode.getData() + ", ";
-            currNode = currNode.getNext();
+        if (head != null) {
+            while (currNode.getNext() != null)
+            {
+                contents += currNode.getData() + ", ";
+                currNode = currNode.getNext();
+            }
+            contents += currNode.getData();
         }
-        contents += currNode.getData();
-        
-        return contents;
+            return contents;
     }
 }

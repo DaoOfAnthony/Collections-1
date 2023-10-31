@@ -114,9 +114,15 @@ public class test {
                                     "Mary Ann"};
         int[] score = {72, 85, 82, 96, 90, 96, 88};
         String[] gender = {"M", "M", "M", "F", "F", "M", "F"};
+        MyLinkedList<Castaway> castaways = new MyLinkedList<Castaways>();
         for(int i = 0; i<7; i++) {
             Castaway cast = new Castaway(lastName[i], firstName[i], score[i]
                     , gender[i]);
+            castaways.add(cast);
+        }
+        
+        for(int i = 0; i<7; i++) {
+            
         }
     }
         

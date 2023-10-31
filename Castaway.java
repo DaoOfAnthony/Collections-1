@@ -5,8 +5,7 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Castaway
-{
+public class Castaway<E extends Comparable<E>> {
     private String lastName;
     private String firstName;
     private int score;
@@ -52,5 +51,9 @@ public class Castaway
         } else {
             return true;
         }
+    }
+    
+    public String toString() {
+        return lastName + " " + firstName + " " + score + " " + gender;
     }
 }
