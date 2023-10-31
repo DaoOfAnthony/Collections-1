@@ -97,7 +97,7 @@ public class test {
         queue1.enqueue(7);
         System.out.println(queue1.toString());
     }*/
-    /*public static void testCastaways() {
+    public static void testCastaways() {
         String[] lastName = {"",
                                     "Grumby",
                                     "Howell",
@@ -118,13 +118,9 @@ public class test {
         for(int i = 0; i<7; i++) {
             Castaway cast = new Castaway(lastName[i], firstName[i], score[i]
                     , gender[i]);
-            castaways.add(cast);
+            castaways.insertSorted(cast);
         }
-        
-        for(int i = 0; i<7; i++) {
-            
-        }
-    }*/
+    }
         
     
     public static void testOtherThings() {
