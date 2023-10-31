@@ -97,7 +97,28 @@ public class test {
         queue1.enqueue(7);
         System.out.println(queue1.toString());
     }*/
-
+    public static void testCastaways() {
+        String[] lastName = {"",
+                                    "Grumby",
+                                    "Howell",
+                                    "Howell",
+                                    "Grant",
+                                    "Hinkley",
+                                    "Summers"};
+        String[] firstName = {"Gilligan",
+                                    "Jonas",
+                                    "Thurston",
+                                    "Lovey",
+                                    "Ginger",
+                                    "Roy",
+                                    "Mary Ann"};
+        int[] score = {72, 85, 82, 96, 90, 96, 88};
+        String[] gender = {"M", "M", "M", "F", "F", "M", "F"};
+        for(int i = 0; i<7; i++) {
+            Castaway cast = new Castaway(lastName[i], firstName[i], score[i]
+                    , gender[i]);
+        }
+    }
         
     
     public static void testOtherThings() {
