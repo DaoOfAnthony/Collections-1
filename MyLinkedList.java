@@ -77,7 +77,7 @@ public class MyLinkedList<E extends Comparable<E>> {
     public void add(int index, E element) {
         Node<E> currNode = head;
         Node<E> newNode = new Node<E>(element);        
-        if (index >= size || index < 0) {
+        if (index > size || index < 0) {
             throw new NoSuchElementException();
         }
         for (int i = 0; i < index - 1; i++) {
@@ -106,6 +106,7 @@ public class MyLinkedList<E extends Comparable<E>> {
             index++;
         }
         add(index, element);
+        size++;
     }
 
     /**
