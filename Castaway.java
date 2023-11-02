@@ -1,9 +1,9 @@
 
 /**
- * Write a description of class Castaways here.
+ * castaways object with interace methods
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Connor Jordan
+ * @version V1
  */
 public class Castaway implements Comparable<Castaway> {
     private String lastName;
@@ -28,15 +28,16 @@ public class Castaway implements Comparable<Castaway> {
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * compares the names last name, first name lexicographically
      *
      * @param  other  the castaway to compare
      * @return        0 if they are the same and the difference between 
      * letters if they are different
      */
+    @Override
     public int compareTo(Castaway other) {
         
-        if(lastName.compareTo(other.lastName)!=0){
+        if(lastName.compareTo(other.lastName) != 0){
             return lastName.compareTo(other.lastName);
         } else if(firstName.compareTo(other.firstName)!=0) {
             return firstName.compareTo(other.firstName);
@@ -45,14 +46,22 @@ public class Castaway implements Comparable<Castaway> {
         }
     }
     
+    /**
+     * compares 2 castaway objects by element.
+     * 
+     * @param other the castaway to compare
+     */
     public boolean equals(Castaway other) {
-        if(compareTo(other) != 0){
+        if (compareTo(other) != 0){
             return false;
         } else {
             return true;
         }
     }
     
+    /**
+     * returns a string of the last name, first name, sore, and gender
+     */
     public String toString() {
         return lastName + " " + firstName + " " + score + " " + gender;
     }
