@@ -116,13 +116,12 @@ public class test {
         String[] gender = {"M", "M", "M", "F", "F", "M", "F"};
         MyLinkedList<Castaway> castaways = new MyLinkedList<Castaway>();
         for(int i = 0; i < gender.length; i++) {
-            castaways.insertSorted(new Castaway(lastName[i], firstName[i], score[i]
-                    , gender[i]));
-        }
+                    castaways.insertSorted(new Castaway(lastName[i], firstName[i], score[i]
+                            , gender[i]));
+                }
         for(int i = 0; i < 7; i++) {
             castaways.get(i).toString();
-        }
-        
+        }   
     }
         
     
