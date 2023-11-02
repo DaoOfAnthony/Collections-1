@@ -5,7 +5,7 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Castaway<E extends Comparable<E>> {
+public class Castaway implements Comparable<Castaway> {
     private String lastName;
     private String firstName;
     private int score;

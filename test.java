@@ -97,7 +97,7 @@ public class test {
         queue1.enqueue(7);
         System.out.println(queue1.toString());
     }*/
-    /*public static void testCastaways() {
+    public static void testCastaways() {
         String[] lastName = {"",
                                     "Grumby",
                                     "Howell",
@@ -114,17 +114,16 @@ public class test {
                                     "Mary Ann"};
         int[] score = {72, 85, 82, 96, 90, 96, 88};
         String[] gender = {"M", "M", "M", "F", "F", "M", "F"};
-        MyLinkedList<Castaway> castaways = new MyLinkedList<Castaways>();
-        for(int i = 0; i<7; i++) {
-            Castaway cast = new Castaway(lastName[i], firstName[i], score[i]
-                    , gender[i]);
-            castaways.add(cast);
+        MyLinkedList<Castaway> castaways = new MyLinkedList<Castaway>();
+        for(int i = 0; i < gender.length; i++) {
+            castaways.insertSorted(new Castaway(lastName[i], firstName[i], score[i]
+                    , gender[i]));
+        }
+        for(int i = 0; i < 7; i++) {
+            castaways.get(i).toString();
         }
         
-        for(int i = 0; i<7; i++) {
-            
-        }
-    }*/
+    }
         
     
     public static void testOtherThings() {

@@ -107,7 +107,6 @@ public class MyLinkedList<E extends Comparable<E>> {
             index++;
         }
         add(index, element);
-        size++;
     }
 
     /**
