@@ -217,6 +217,7 @@ public class test {
         listSorted.insertSorted(67);
         listSorted.insertSorted(0);
         listSorted.insertSorted(-6);
+        System.out.println(listSorted.size());
         if (!listSorted.toString().equals("-6, 0, 2, 6, 8, 9, 67")) {
             System.out.println("Failed insertSorted " + listSorted.toString());
         }
