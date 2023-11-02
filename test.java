@@ -119,8 +119,8 @@ public class test {
                     castaways.insertSorted(new Castaway(lastName[i], firstName[i], score[i]
                             , gender[i]));
                 }
-        for(int i = 0; i < 7; i++) {
-            castaways.get(i).toString();
+        for(int i = 0; i < gender.length; i++) {
+            System.out.println(castaways.get(i).toString());
         }   
     }
         
