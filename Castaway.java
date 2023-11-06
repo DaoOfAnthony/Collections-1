@@ -57,7 +57,7 @@ public class Castaway implements Comparable<Castaway> {
     }
     
     /**
-     * returns a string of the last name, first name, sore, and gender
+     * returns a string of the last name, first name, score, and gender
      */
     public String toString() {
         return lastName + " " + firstName + " " + score + " " + gender;
