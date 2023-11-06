@@ -51,12 +51,9 @@ public class Castaway implements Comparable<Castaway> {
      * 
      * @param other the castaway to compare
      */
-    public boolean equals(Castaway other) {
-        if (compareTo(other) != 0){
-            return false;
-        } else {
-            return true;
-        }
+    @Override
+    public boolean equals(Object other) {
+        return (this.compareTo((Castaway) other) == 0);
     }
     
     /**
