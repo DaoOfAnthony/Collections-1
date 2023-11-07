@@ -9,7 +9,8 @@
 public class Node<E extends Comparable <E>>
 {
     private E data;
-    Node<E> next;
+    private Node<E> next;
+    private Node<E> previous;
 
     /**
      * Constructor for objects of class Node
@@ -49,5 +50,13 @@ public class Node<E extends Comparable <E>>
      */
     public void setNext(Node<E> newNext) {
         next = newNext;
+    }
+    
+    public Node<E> getPrevious() {
+        return previous;
+    }
+    
+    public void setPrevious(Node<E> newPrevious) {
+        previous = newPrevious;
     }
 }
