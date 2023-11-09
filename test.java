@@ -127,14 +127,14 @@ public class test {
     
     public static void testOtherThings() {
         MyLinkedList<Integer> list = new MyLinkedList<Integer>();
-        if (!list.isEmpty()) {
-            System.out.println("Failed isEmpty");
-        }
         list.addHead(3);
         list.addHead(4);
         list.addHead(5);
         list.addHead(3);
         System.out.println(list.toString());
+        if (list.size() != 4) {
+            System.out.println("Failed size");
+        }
         if (list.getHead() != 3) {
             System.out.println("Failed getHead");
         }
@@ -152,8 +152,14 @@ public class test {
     
     public static void testLL() {
         MyLinkedList<Integer> list = new MyLinkedList<Integer>();
+        if (!list.isEmpty()) {
+            System.out.println("Failed isEmpty");
+        }
         list.addHead(1);
         list.addHead(2);
+        if (list.size() != 2) {
+            System.out.println("Failed size");
+        }
         if (list.remove(1) == null) {
             System.out.println("Failed remove index, is null");
         }
@@ -174,6 +180,9 @@ public class test {
         }
         list.add(4, 10);
         list.addTail(5);
+        if (list.size() != 6) {
+            System.out.println("Failed size");
+        }
         if (!list.toString().equals("9, 3, 4, 2, 10, 5")) {
             System.out.println("Your add method does not set the tail variable when inserting at the index equal to the size of the list  " + list.toString());
         }
@@ -217,7 +226,9 @@ public class test {
         listSorted.insertSorted(67);
         listSorted.insertSorted(0);
         listSorted.insertSorted(-6);
-        System.out.println(listSorted.size());
+        if (listSorted.size() != 7) {
+            System.out.println("Failed size");
+        }
         if (!listSorted.toString().equals("-6, 0, 2, 6, 8, 9, 67")) {
             System.out.println("Failed insertSorted " + listSorted.toString());
         }

@@ -70,7 +70,7 @@ public class MyLinkedList<E extends Comparable<E>> {
         
         if (index < 0 || index > size) { // deals with invalid index
             throw new NoSuchElementException();
-        } else if (index == 0) {//adding head deals with empty and non-empty
+        } else if (index == 0) { // adding head deals with empty and non-empty
             addHead(element);
         } else if (index == size) {
             addTail(element);
@@ -192,13 +192,13 @@ public class MyLinkedList<E extends Comparable<E>> {
     public Node<E> indexHelper(int index) {
         if (index < size / 2) { // index is in the first half of array
             Node<E> currNode = head;
-            for (int i = 0; i<index; i++) {
+            for (int i = 0; i < index; i++) {
                 currNode = currNode.getNext();
             }
             return currNode;
         } else {
             Node<E> currNode = tail;
-            for (int i = size-1; i>index; i--) {
+            for (int i = size - 1; i > index; i--) {
                 currNode = currNode.getPrevious();
             }
             return currNode;
