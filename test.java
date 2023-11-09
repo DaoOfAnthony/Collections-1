@@ -97,6 +97,22 @@ public class test {
         queue1.enqueue(7);
         System.out.println(queue1.toString());
     }*/
+    
+    public static String testRadDeg() {
+        boolean notEqual = true;
+        final double pi = 3.14;
+        int deg = 1;
+        int rad = 1;
+        while(notEqual) {
+            if((rad*.0174)%360 == deg%360) {
+                notEqual = false;
+            } else {
+                deg++;
+                rad++;
+            }
+        }
+        return deg + "degrees and " + rad + "rad";
+    }
     public static void testCastaways() {
         String[] lastName = {"",
                                     "Grumby",
@@ -226,6 +242,7 @@ public class test {
         listSorted.insertSorted(67);
         listSorted.insertSorted(0);
         listSorted.insertSorted(-6);
+        System.out.println(listSorted.integrityCheck());
         if (listSorted.size() != 7) {
             System.out.println("Failed size");
         }

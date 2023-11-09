@@ -188,7 +188,7 @@ public class MyLinkedList<E extends Comparable<E>> {
      * @param  index  the index at which to return the node
      * @return        the node at the designated index
      */
-    public Node<E> indexHelper(int index) {
+    private Node<E> indexHelper(int index) {
         if (index < size / 2) { // index is in the first half of array
             Node<E> currNode = head;
             for (int i = 0; i < index; i++) {
@@ -274,6 +274,27 @@ public class MyLinkedList<E extends Comparable<E>> {
      */
     public int size() {
         return size;
+    }
+    
+    public boolean integrityCheck() {
+        Node<E> currNode = head;
+        boolean integrity = true;
+        if(currNode.getNext().getPrevious() == head) {
+            currNode = currNode.getNext();
+            for(int i = 0; i < size-2; i++) {
+                if(!(currNode.getNext().getPrevious() == currNode &&
+                        currNode.getPrevious().getNext() == currNode)) {
+                    integrity = false;
+                }
+                currNode = currNode.getNext();
+            }
+            if(!(currNode.getPrevious().getNext() == currNode)) {
+                integrity = false;
+            }
+        } else {
+            integrity = false;
+        }
+        return integrity;
     }
     
     /**
