@@ -115,9 +115,9 @@ public class MyLinkedList<E extends Comparable<E>> {
             size++;
         } else {
             newNode.setNext(head);
-            head.setPrevious(newNode);
-            size++;
+            newNode.getNext().setPrevious(newNode);
             head = newNode;
+            size++;
         }
     }
     
@@ -132,11 +132,10 @@ public class MyLinkedList<E extends Comparable<E>> {
         } else {
             Node<E> newNode = new Node<E>(element);
             
-            size++;
             newNode.setPrevious(tail);
-            tail.setNext(newNode);
+            newNode.getPrevious().setNext(newNode);
             tail = newNode;
-        
+            size++;
         }
     }
     
