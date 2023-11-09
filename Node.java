@@ -52,10 +52,20 @@ public class Node<E extends Comparable <E>>
         next = newNext;
     }
     
+    /**
+     * gets the previous node
+     * 
+     * @return  the previous node
+     */
     public Node<E> getPrevious() {
         return previous;
     }
     
+    /**
+     * sets the pointer to the previous node
+     * 
+     * @param  newPrevious  the new node to set previous to
+     */
     public void setPrevious(Node<E> newPrevious) {
         previous = newPrevious;
     }

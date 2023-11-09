@@ -7,7 +7,6 @@ import java.util.NoSuchElementException;
  * @version V1
  */
 public class MyLinkedList<E extends Comparable<E>> {
-    // instance variables - replace the example below with your own
     private Node<E> head;
     private Node<E> tail;
     private int size;
@@ -32,7 +31,7 @@ public class MyLinkedList<E extends Comparable<E>> {
      * than 0
      */
     public E get(int index) throws NoSuchElementException {
-        if (index < 0 || index > size() - 1) {
+        if (index < 0 || index > size() - 1) { // deals with invalid index
             throw new NoSuchElementException();
         } else {
             return indexHelper(index).getData();
@@ -49,7 +48,7 @@ public class MyLinkedList<E extends Comparable<E>> {
      * than 0
      */
     public void set(int index, E element) {
-        if (index > size() - 1 || index < 0) {
+        if (index > size() - 1 || index < 0) { // deals with invalid index
             throw new NoSuchElementException();
         } else {
             Node<E> currNode = head;
@@ -69,7 +68,7 @@ public class MyLinkedList<E extends Comparable<E>> {
     */
     public void add(int index, E element) { 
         
-        if (index < 0 || index > size) {
+        if (index < 0 || index > size) { // deals with invalid index
             throw new NoSuchElementException();
         } else if (index == 0) {//adding head deals with empty and non-empty
             addHead(element);
@@ -128,7 +127,7 @@ public class MyLinkedList<E extends Comparable<E>> {
      * @param  element  the element to be added in the tail
      */
     public void addTail(E element) {
-        if (head == null) {
+        if (head == null) { // deals with empty list
             addHead(element);
         } else {
             Node<E> newNode = new Node<E>(element);
@@ -161,7 +160,7 @@ public class MyLinkedList<E extends Comparable<E>> {
      * than 0
      */
     public E remove(int index) {
-        if (index >= size() || index < 0) {
+        if (index >= size() || index < 0) { // deals with invalid index
             throw new NoSuchElementException();
         } else if (index == 0) {//index is at head
             return removeHead();
@@ -191,7 +190,7 @@ public class MyLinkedList<E extends Comparable<E>> {
      * @return        the node at the designated index
      */
     public Node<E> indexHelper(int index) {
-        if (index < size / 2) {
+        if (index < size / 2) { // index is in the first half of array
             Node<E> currNode = head;
             for (int i = 0; i<index; i++) {
                 currNode = currNode.getNext();
@@ -199,7 +198,7 @@ public class MyLinkedList<E extends Comparable<E>> {
             return currNode;
         } else {
             Node<E> currNode = tail;
-            for (int i = size-1; i>index; i--) {//maybe use size not size-1??
+            for (int i = size-1; i>index; i--) {
                 currNode = currNode.getPrevious();
             }
             return currNode;
@@ -222,7 +221,7 @@ public class MyLinkedList<E extends Comparable<E>> {
             currNode = currNode.getNext();
             index++;
         }
-        if (currNode == null) {
+        if (currNode == null) { // if empty
             return null;
         }
         return remove(index);
@@ -234,8 +233,8 @@ public class MyLinkedList<E extends Comparable<E>> {
      * @throws  NoSuchElementException  if the head is null
      */
     public E removeHead() {
-        if (head == null) {
-            throw new NoSuchElementException(); // handles error of empty list
+        if (head == null) { // deals with empty list
+            throw new NoSuchElementException();
         } else {
             E temp = head.getData();
             head = head.getNext();
@@ -253,8 +252,8 @@ public class MyLinkedList<E extends Comparable<E>> {
      * @throws  NoSuchElementException  if head is null
      */
     public E getHead() {
-        if(head == null) {
-            throw new NoSuchElementException(); // handles error of empty list
+        if(head == null) { // deals with empty list
+            throw new NoSuchElementException();
         } else {
             return head.getData();
         }
@@ -287,7 +286,7 @@ public class MyLinkedList<E extends Comparable<E>> {
         String contents = "";
         
         Node<E> currNode = head;
-        if (head != null) {
+        if (head != null) { // deals with empty list
             while (currNode.getNext() != null)
             {
                 contents += currNode.getData() + ", ";
