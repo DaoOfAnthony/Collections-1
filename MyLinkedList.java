@@ -109,7 +109,7 @@ public class MyLinkedList<E extends Comparable<E>> {
     public void addHead(E element) {
         Node<E> newNode = new Node<E>(element);
         
-        if (head == null) {
+        if (head == null) { // deals with empty list
             head = newNode;
             tail = newNode;
             size++;
