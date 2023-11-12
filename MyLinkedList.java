@@ -232,14 +232,21 @@ public class MyLinkedList<E extends Comparable<E>> {
      * @throws  NoSuchElementException  if the head is null
      */
     public E removeHead() {
-        if (head == null) { // deals with empty list
+        if (isEmpty()) {
             throw new NoSuchElementException();
         } else {
-            E temp = head.getData();
-            head = head.getNext();
-            head.setPrevious(null);
+            Node<E> temp = head;
+            
+            if (size == 1) { // Removing only node
+                tail = null;
+                head = null;
+            } else { // Not last node
+                head.getNext().setPrevious(null);
+                head = head.getNext(); 
+            }
             size--;
-            return temp;
+            temp.setNext(null);
+            return temp.getData();
         }
     }
     

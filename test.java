@@ -1,5 +1,6 @@
 import java.util.NoSuchElementException;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Write a description of class test here.
@@ -8,95 +9,64 @@ import java.util.ArrayList;
  * @version (a version number or a date)
  */
 public class test {
-    /*public static void testQueueLL() {
-        MyQueueLL queue1 = new MyQueueLL();
-        queue1.enqueue(1);
-        queue1.enqueue(2);
-        queue1.enqueue(3);
-        System.out.println(queue1.dequeue());
-        System.out.println(queue1.dequeue());
-        System.out.println(queue1.toString());
-        System.out.println(queue1.size());
-        queue1.enqueue(4);
-        System.out.println(queue1.toString());
-        queue1.enqueue(5);
-        System.out.println(queue1.toString());
-        queue1.enqueue(6);
-        System.out.println(queue1.toString());
-        System.out.println(queue1.size());
-        queue1.enqueue(7);
-        System.out.println(queue1.toString());
-    }
     
-    public static void testStackLL() {
-        MyStackLL<Integer> stack1 = new MyStackLL<Integer>();
-        stack1.push(1);
-        stack1.push(2);
-        stack1.push(5);
-        System.out.println(stack1.pop());
-        System.out.println(stack1.size());
-        System.out.println(stack1.toString());
-        stack1.push(6);
-        stack1.push(6);
-        System.out.println(stack1.size());
-        System.out.println(stack1.pop());
-        System.out.println(stack1.toString());
-    }
-    
-    public static void testLL() {
+    public static void testWithArrayList() {
+        ArrayList<Integer> aList = new ArrayList<Integer>();
         MyLinkedList<Integer> list = new MyLinkedList<Integer>();
-        System.out.println(list.isEmpty());
-        list.add(5);
-        list.addHead(5);
-        list.addHead(4);
-        System.out.println(list.size());
-        list.add(6);
-        list.add(7);
-        System.out.println(list.toString());
-        list.removeHead();
-        System.out.println(list.toString());
-        System.out.println(list.isEmpty());
-        System.out.println(list.getHead());
-        list.removeHead();
-        list.removeHead();
-        list.getHead();
+        Random rand = new Random();
+        int i = 0;
+        int head = 0;
+        while (aList.toString().equals("[" + list.toString() + "]") && i < 10000) {
+            int j = rand.nextInt(8);
+            if (j == 0) {
+                int index = rand.nextInt(list.size() + 1);
+                int element = rand.nextInt(99999);
+                aList.add(index, element);
+                list.add(index, element);
+            }
+            if (j == 1) {
+                int element = rand.nextInt(99999);
+                aList.add(element);
+                list.add(element);
+            }
+            if (j == 2 && list.size() != 0) {
+                int index = rand.nextInt(list.size());
+                int element = rand.nextInt(99999);
+                aList.set(index, element);
+                list.set(index, element);
+            }
+            if (j == 3 && !list.isEmpty()) {
+                int index = rand.nextInt(list.size());
+                aList.remove(index);
+                list.remove(index);
+            }
+            if (j == 4) {
+                int element = rand.nextInt(99999);
+                aList.remove(new Integer(element));
+                list.remove(new Integer(element));
+            }
+            if (j == 5 && list.size() != 0) {
+                int index = rand.nextInt(list.size());
+                if (aList.get(index).compareTo(list.get(index)) != 0) {
+                    i = 99999999;
+                    System.out.println(aList.get(index) + " " + list.get(index));
+                }
+            }
+            if (j == 6 && list.size() != 0) {
+                list.removeHead();
+                aList.remove(0);
+                head++;
+            }
+            if (j == 7) {
+                int element = rand.nextInt(99999);
+                list.addTail(element);
+                aList.add(element);
+            }
+            i++;
+        }
+        System.out.println(aList.toString().equals("[" + list.toString() + "]") + " " + i + " " + head);
     }
-    
-    public static void testStack() {
-        MyStack<Integer> stack1 = new MyStack<Integer>();
-        stack1.push(1);
-        stack1.push(2);
-        stack1.push(5);
-        System.out.println(stack1.pop());
-        System.out.println(stack1.size());
-        stack1.push(6);
-        stack1.push(6);
-        System.out.println(stack1.size());
-        System.out.println(stack1.pop());
-        System.out.println(stack1.isFull());
-        System.out.println(stack1.toString());
-    }
-    
-    public static void testQueue() {
-        MyQueue queue1 = new MyQueue();
-        queue1.enqueue(1);
-        queue1.enqueue(2);
-        queue1.enqueue(3);
-        System.out.println(queue1.dequeue());
-        System.out.println(queue1.dequeue());
-        System.out.println(queue1.toString());
-        System.out.println(queue1.size());
-        queue1.enqueue(4);
-        System.out.println(queue1.toString());
-        queue1.enqueue(5);
-        System.out.println(queue1.toString());
-        queue1.enqueue(6);
-        System.out.println(queue1.toString());
-        System.out.println(queue1.isFull());
-        System.out.println(queue1.size());
-        queue1.enqueue(7);
-        System.out.println(queue1.toString());
-    }*/
+
     
     public static String testRadDeg() {
         boolean notEqual = true;
