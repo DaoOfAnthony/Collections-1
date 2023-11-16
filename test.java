@@ -9,7 +9,13 @@ import java.util.Random;
  * @version (a version number or a date)
  */
 public class test {
-    
+    public static void testBST() {
+        BinarySearchTree tree = new BinarySearchTree();
+        tree.insert(2);
+        tree.insert(1);
+        tree.insert(3);
+        tree.insert(3);
+    }
     public static void testWithArrayList() {
         ArrayList<Integer> aList = new ArrayList<Integer>();
         MyLinkedList<Integer> list = new MyLinkedList<Integer>();
@@ -67,10 +73,8 @@ public class test {
         System.out.println(aList.toString().equals("[" + list.toString() + "]") + " " + i + " " + head);
     }
 
-    
     public static String testRadDeg() {
         boolean notEqual = true;
-        final double pi = 3.14;
         int deg = 1;
         int rad = 1;
         while(notEqual) {
@@ -81,8 +85,9 @@ public class test {
                 rad++;
             }
         }
-        return deg + "degrees and " + rad + "rad";
+        return deg + "degrees equals " + rad + "rad";
     }
+    
     public static void testCastaways() {
         String[] lastName = {"",
                                     "Grumby",
@@ -110,7 +115,6 @@ public class test {
         }   
     }
         
-    
     public static void testOtherThings() {
         MyLinkedList<Integer> list = new MyLinkedList<Integer>();
         list.addHead(3);
@@ -277,5 +281,7 @@ public class test {
             System.out.println("Failed toString " + queue.toString());
         }
     }
+
+}
 
 }
