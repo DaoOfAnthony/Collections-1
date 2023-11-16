@@ -1,3 +1,4 @@
+import java.util.NoSuchElementException;
 
 /**
  * Creates an abstract data type modeled after a binary search tree
@@ -39,7 +40,22 @@ public class BinarySearchTree<E extends Comparable<E>> {
      * @return  the matching element
      */
     public E search(E element) {
-        return search(element);
+        if (root == null) {
+            return null;
+        } else {
+            return root.search(element);
+        }
+    }
+    
+    /**
+     * removes and returns the matching element
+     * 
+     * @param  the element to be removed
+     * 
+     * @return the matching element;
+     */
+    public E remove(E element) {
+        
     }
     
     /**
@@ -47,8 +63,12 @@ public class BinarySearchTree<E extends Comparable<E>> {
      * 
      * @return minimum element in the binary search tree
      */
-    public void getMin() {
-        //change to E not void;
+    public E getMin() {
+        if (size == 0) {
+            return null;
+        } else {
+            return getMin();
+        }
     }
     
     /**
@@ -56,8 +76,21 @@ public class BinarySearchTree<E extends Comparable<E>> {
      * 
      * @return maximum element in the binary search tree
      */
-    public void getMax() {
-        //change to E not void
+    public E getMax() {
+        if (size == 0) {
+            return null;
+        } else {
+            return getMax();
+        }
+    }
+    
+    /**
+     * Returns the number of levels in the binary search tree
+     * 
+     * @return the number of levels in the tree
+     */
+    public int getDepth() {
+        
     }
     
     /**
@@ -66,7 +99,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
      * @return is the binary search tree empty
      */
     public boolean isEmpty() {
-        return size==0;
+        return size == 0;
     }
     
     /**
@@ -76,5 +109,15 @@ public class BinarySearchTree<E extends Comparable<E>> {
      */
     public int size() {
         return size;
+    }
+    
+    /**
+     * prints all of the elements in order smallest to largest
+     * 
+     * @return  a string of all the elements lowest to highest 
+     * seperated by commas
+     */
+    public String toString() {
+        return "";
     }
 }
