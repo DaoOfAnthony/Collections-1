@@ -14,7 +14,9 @@ public class test {
         tree.insert(2);
         tree.insert(1);
         tree.insert(3);
-        tree.insert(3);
+        tree.insert(5);
+        System.out.println(tree.search(3));
+        System.out.println(tree.size());
     }
     public static void testWithArrayList() {
         ArrayList<Integer> aList = new ArrayList<Integer>();
@@ -281,7 +283,5 @@ public class test {
             System.out.println("Failed toString " + queue.toString());
         }
     }
-
-}
 
 }
