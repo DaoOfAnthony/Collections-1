@@ -61,20 +61,34 @@ public class BinarySearchTreeNode<E extends Comparable<E>> {
     
     public int getDepth() {
         if(left  == null && right == null) {
-            return 0;
+            return 0; // maybe 1?
         } else if (left == null) {
             return right.getDepth() + 1;
         } else if (right == null) {
             return left.getDepth() + 1;
         }
         else {
-            
+            if (left.getDepth() >= right.getDepth()) {
+                return left.getDepth() + 1;
+            } else {
+                return right.getDepth() + 1;
+            }
         }
-        /*if (left.getDepth() > right.getDepth()) {
-            return left.getDepth();
-        } else {
-            return right.getDepth();
-        }*/
+    }
+    
+    public String toString() {
+        String returned = "";
+        
+        if (left != null) {
+            returned = left.toString() + ", ";
+        } 
+        
+        returned = returned + data.toString();
+        
+        if (right != null) {
+            returned = returned + ", " + right.toString();
+        }
+        return returned;
     }
     
     public E getData() {

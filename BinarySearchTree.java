@@ -40,7 +40,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
      * @return  the matching element
      */
     public E search(E element) {
-        if (root == null) {
+        if (isEmpty()) {
             return null;
         } else {
             return root.search(element);
@@ -55,7 +55,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
      * @return the matching element;
      */
     public E remove(E element) {
-        
+        return element;
     }
     
     /**
@@ -64,7 +64,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
      * @return minimum element in the binary search tree
      */
     public E getMin() {
-        if (size == 0) {
+        if (isEmpty()) {
             return null;
         } else {
             return getMin();
@@ -90,7 +90,11 @@ public class BinarySearchTree<E extends Comparable<E>> {
      * @return the number of levels in the tree
      */
     public int getDepth() {
-        
+        if (isEmpty()) {
+            return 0;
+        } else {
+            return root.getDepth();
+        }
     }
     
     /**
