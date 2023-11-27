@@ -25,6 +25,32 @@ public class BinarySearchTreeNode<E extends Comparable<E>> {
         }
     }
     
+    public BinarySearchTreeNode remove(E element) { // assume elem is in array
+        if(left.getData() == element) {
+            left = left.getNext
+        } else if (right.getData() == element) {
+            right = left.getNext();
+        } else {
+            left = left.remove(element);
+        }
+    }
+    
+    public BinarySearchTreeNode removeMin(E element) { // assume tree has values
+        if(left == null) {
+            return null;
+        } else {
+            return removeMin(left);
+        }
+    }
+    
+    public BinarySearchTreeNode removeMax(E element) { // assume tree has values
+        if(right == null) {
+            return null;
+        } else {
+            return removeMax(left);
+        }
+    }
+    
     public E search(E element) {
         if (data.compareTo(element) == 0) {
             return element;
