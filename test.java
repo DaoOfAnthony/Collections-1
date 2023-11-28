@@ -16,7 +16,7 @@ public class test {
             bst.insert(i);
         }
         bst.printTree(1);
-        bst.remove(3);
+        bst.remove(11);
         System.out.println("Divider");
         bst.printTree(1);
     }
