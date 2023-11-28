@@ -10,13 +10,13 @@ public class BinarySearchTreeNode<E extends Comparable<E>> {
     }
     
     public void insert(E element) {
-        if (data.compareTo(element ) > 0) {
+        if (data.compareTo(element ) > 0) { // left
             if (left == null) {
                 left = new BinarySearchTreeNode<E>(element);
             } else {
                 left.insert(element);
             }
-        } else {
+        } else { // right
             if (right == null) {
                 right = new BinarySearchTreeNode<E>(element);
             } else {
@@ -26,22 +26,23 @@ public class BinarySearchTreeNode<E extends Comparable<E>> {
     }
     
     public BinarySearchTreeNode remove(E element) { // assume element is in array
-         if (element.compareTo(data) > 0) { // element could be a non int, use compare to
-            if (right == null) {
-                return this;
-            } else {
-                right = right.remove(element);
-                return this;
-            }
-        } else if (element.compareTo(data) < 0) {
+         
+        if (element.compareTo(data) < 0) { // left side
             if (left == null) {
                 return this;
             } else {
                 left = left.remove(element);
                 return this;
             }
-        } else {
-            if (left == null && right == null) {
+        } else if (element.compareTo(data) > 0) { // right side
+            if (right == null) {
+                return this;
+            } else {
+                right = right.remove(element);
+                return this;
+            }
+        } else { // match
+            if (left == null && right == null) { // leaf
                 data = null;
                 return null;
             } else if (right == null) {
@@ -114,7 +115,7 @@ public class BinarySearchTreeNode<E extends Comparable<E>> {
     
     public int getDepth() {
         if(left  == null && right == null) {
-            return 0; // maybe 1?
+            return 0;
         } else if (left == null) {
             return right.getDepth() + 1;
         } else if (right == null) {
@@ -137,8 +138,7 @@ public class BinarySearchTreeNode<E extends Comparable<E>> {
         data = newData;
     }
     
-    public BinarySearchTreeNode<E> getLeft()
-    {
+    public BinarySearchTreeNode<E> getLeft() {
         return left;
     }
     
@@ -146,8 +146,7 @@ public class BinarySearchTreeNode<E extends Comparable<E>> {
         left = newLeft;
     }
     
-    public BinarySearchTreeNode<E> getRight()
-    {
+    public BinarySearchTreeNode<E> getRight() {
         return right;
     }
     

@@ -11,14 +11,19 @@ import java.util.Random;
 public class test {
     public static void testBST() {
         BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
+        System.out.println(bst.getDepth());
         bst.insert(5);
+        System.out.println(bst.getDepth());
+        System.out.println(bst.size());
         for (int i = 0; i < 10; i++) {
             bst.insert(i);
         }
         bst.printTree(1);
-        bst.remove(11);
+        System.out.println(bst.getDepth());
+        bst.remove(3);
         System.out.println("Divider");
         bst.printTree(1);
+        System.out.println(bst.toString());
     }
     
     public static void testWithArrayList() {

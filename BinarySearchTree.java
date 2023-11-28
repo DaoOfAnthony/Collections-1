@@ -48,7 +48,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
     
     /**
-     * removes and returns the matching element
+     * Removes and returns the matching element
      * 
      * @param  the element to be removed
      * 
@@ -99,7 +99,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
         if (isEmpty()) {
             return 0;
         } else {
-            return root.getDepth();
+            return root.getDepth() + 1;
         }
     }
     
@@ -109,7 +109,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
      * @return the minimum element in the tree
      */
     public E removeMin() {
-        if(isEmpty()) {
+        if (isEmpty()) {
             return null;
         } else {
             E returned = root.getMin();
@@ -124,7 +124,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
      * @return the maximum element in the tree
      */
     public E removeMax() {
-        if(isEmpty()) {
+        if (isEmpty()) {
             return null;
         } else {
             E returned = root.getMax();
@@ -152,7 +152,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
     
     /**
-     * prints all of the elements in order smallest to largest
+     * Prints all of the elements in order smallest to largest
      * 
      * @return  a string of all the elements lowest to highest 
      * seperated by commas
@@ -165,6 +165,9 @@ public class BinarySearchTree<E extends Comparable<E>> {
         }
     }
     
+    /**
+     * Mr murphy method; Prints the structure of the tree
+     */
     public void printTree(int i) {
         if (!isEmpty()) {
             root.printTree(i);
