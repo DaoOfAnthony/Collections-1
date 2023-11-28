@@ -10,14 +10,17 @@ import java.util.Random;
  */
 public class test {
     public static void testBST() {
-        BinarySearchTree tree = new BinarySearchTree();
-        tree.insert(2);
-        tree.insert(1);
-        tree.insert(3);
-        tree.insert(5);
-        System.out.println(tree.search(3));
-        System.out.println(tree.size());
+        BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
+        bst.insert(5);
+        for (int i = 0; i < 10; i++) {
+            bst.insert(i);
+        }
+        bst.printTree(1);
+        bst.remove(3);
+        System.out.println("Divider");
+        bst.printTree(1);
     }
+    
     public static void testWithArrayList() {
         ArrayList<Integer> aList = new ArrayList<Integer>();
         MyLinkedList<Integer> list = new MyLinkedList<Integer>();
