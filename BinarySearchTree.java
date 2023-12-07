@@ -83,7 +83,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
      * @return maximum element in the binary search tree
      */
     public E getMax() {
-        if (size == 0) {
+        if (isEmpty()) {
             return null;
         } else {
             return root.getMax();

@@ -9,6 +9,17 @@ import java.util.Random;
  * @version (a version number or a date)
  */
 public class test {
+    public static void testHeap() {
+        MyHeap<Integer> heap = new MyHeap<Integer>();
+        heap.add(5);
+        heap.add(10);
+        heap.add(7);
+        heap.add(6);
+        heap.add(20);
+        heap.add(0);
+        heap.printTree(2);
+        System.out.println(heap.size());
+    }
     public static void testBST() {
         BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
         System.out.println(bst.getDepth());
