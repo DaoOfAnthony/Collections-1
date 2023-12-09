@@ -55,7 +55,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
      * @return the matching element;
      */
     public E remove(E element) {
-        if(isEmpty()) { // empty
+        if (isEmpty()) { // empty
             return null;
         } else if (search(element) == null) { // elem not in tree
             return null;

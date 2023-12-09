@@ -26,33 +26,33 @@ public class BinarySearchTreeNode<E extends Comparable<E>> {
     }
     
     public BinarySearchTreeNode remove(E element) { // assume element is in array
-        if (data == element) { // base case
-                if (left == null && right == null) {
-                    return null;
-                } else if (left != null && right == null) {
-                    return left;
-                } else if (left == null && right != null){
-                    return right;
-                } else { // 2 children
-                    data = left.getMax();
-                    left = left.removeMax();
+        if (data == element) { // matches up
+            if (left == null && right == null) { // leaf
+                return null;
+            } else if (left != null && right == null) {
+                return left;
+            } else if (left == null && right != null){
+                return right;
+            } else { // 2 children
+                data = left.getMax();
+                left = left.removeMax();
+            }
+        } else {
+            if (element.compareTo(data) < 0) {
+                if (left != null) {
+                    left = left.remove(element);
                 }
             } else {
-                if (element.compareTo(data) < 0) {
-                    if (left != null) {
-                        left = left.remove(element);
-                    }
-                } else {
-                    if (right != null) {
-                        right = right.remove(element); 
-                    }
+                if (right != null) {
+                    right = right.remove(element); 
                 }
             }
+        }
         return this;
     }
     
     public BinarySearchTreeNode<E> removeMin() { // assume tree has values
-        if(left == null) {
+        if (left == null) {
             return right;
         } else {
             left = left.removeMin();
@@ -61,7 +61,7 @@ public class BinarySearchTreeNode<E extends Comparable<E>> {
     }
     
     public BinarySearchTreeNode<E> removeMax() { // assume tree has values
-        if(right == null) {
+        if (right == null) {
             return left;
         } else {
             right = right.removeMin();
@@ -88,7 +88,7 @@ public class BinarySearchTreeNode<E extends Comparable<E>> {
     }
     
     public E getMin() {
-        if(left == null) {
+        if (left == null) {
             return data;
         } else {
             return left.getMin();
@@ -96,7 +96,7 @@ public class BinarySearchTreeNode<E extends Comparable<E>> {
     }
     
     public E getMax() {
-        if(right == null) {
+        if (right == null) {
             return data;
         } else {
             return right.getMax();
@@ -104,7 +104,7 @@ public class BinarySearchTreeNode<E extends Comparable<E>> {
     }
     
     public int getDepth() {
-        if(left  == null && right == null) {
+        if (left  == null && right == null) {
             return 0;
         } else if (left == null) {
             return right.getDepth() + 1;
