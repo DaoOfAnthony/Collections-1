@@ -11,12 +11,14 @@ import java.util.Random;
 public class test {
     public static void testHeap() {
         MyHeap<Integer> heap = new MyHeap<Integer>();
+        System.out.println(heap.removeMin());
         heap.add(5);
         heap.add(10);
         heap.add(7);
         heap.add(6);
         heap.add(20);
         heap.add(0);
+        heap.removeMin();
         heap.printTree(2);
         System.out.println(heap.size());
     }

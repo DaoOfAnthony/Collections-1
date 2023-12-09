@@ -63,30 +63,44 @@ public class MyHeap<E extends Comparable<E>> {
      * @return  the minimum element in the heap
      */
     public E removeMin() {
-        if (isEmpty()) {
+        if(isEmpty()) {
             return null;
-        } else if (size() == 1) {
-            elemArray[0] = null;
         } else {
-            E temp = getMin();
-            int currPlace = 0;
-            
-            while(elemArray[currPlace] != null) {
-                currPlace++;
+            E toReturn = getMin();
+            elemArray[0] = elemArray[lastNode];
+            elemArray[lastNode] = null;
+            int parentPos = 0;
+            lastNode--;
+            E temp = elemArray[parentPos];
+            while ((parentPos * 2) + 1 < lastNode && (parentPos * 2) + 2 < lastNode) {
+                temp = elemArray[parentPos];
+                if (elemArray[(parentPos * 2) + 1].compareTo(elemArray[(parentPos * 2) + 2]) < 0) {
+                    elemArray[parentPos] = elemArray[(parentPos * 2) + 1];
+                    elemArray[(parentPos * 2) + 1] = temp;
+                    parentPos = (parentPos * 2) + 1;
+                } else {
+                    elemArray[parentPos] = elemArray[(parentPos * 2) + 2];
+                    elemArray[(parentPos * 2) + 2] = temp;
+                    parentPos = (parentPos * 2) + 2;
+                }
             }
-            elemArray[0] = elemArray[currPlace];
-            elemArray[currPlace] = null;
-            int self = 0;
-            int left = 1;
-            int right = 2;
             
-            while(left != null && elemArray[left].compareTo(elemArray[self])
-                    > 0 || left != null && right != null && 
-                    elemArray[right].compareTo(elemArray[self]) > 0) {
-                        
-                    }
+            if (elemArray[(parentPos * 2) + 2] != null) {
+                if (elemArray[(parentPos * 2) + 1].compareTo(elemArray[(parentPos * 2) + 2]) < 0) {
+                    elemArray[parentPos] = elemArray[(parentPos * 2) + 1];
+                    elemArray[(parentPos * 2) + 1] = temp;
+                    parentPos = (parentPos * 2) + 1;
+                } else {
+                    elemArray[parentPos] = elemArray[(parentPos * 2) + 2];
+                    elemArray[(parentPos * 2) + 2] = temp;
+                    parentPos = (parentPos * 2) + 2;
+                }
+            } else if (elemArray[(parentPos * 2) + 1] != null) {
+                
+            }
             
-        }
+            return toReturn;
+        }    
     }
     
     /**
