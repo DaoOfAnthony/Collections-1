@@ -1,28 +1,27 @@
-import java.util.NoSuchElementException;
-
 /**
- * Creates an abstract data type modeled after a binary search tree
+ * Implementation of Binary Search Tree
  *
- * @author Connor Jordan
+ * @author Anthony
  * @version V1
  */
-public class BinarySearchTree<E extends Comparable<E>> {
+public class  BinarySearchTree<E extends Comparable<E>>
+{
+    private BinarySearchTreeNode<E> root; 
     private int size;
-    private BinarySearchTreeNode<E> root;
-
-    /**
-     * Constructor for objects of class BinarySearchTree
+    
+      /**
+     * Constructor for class BinarySearchTree
      */
     public BinarySearchTree() {
-        size = 0;
         root = null;
+        size = 0;
     }
-
+    
     /**
      * Inserts element into the binary search tree
      *
-     * @param  element  element to be inserted
-     */
+     * @param  element that's being inserted
+    */
     public void insert(E element) {
         if (isEmpty()) {
             root = new BinarySearchTreeNode<E>(element);
@@ -32,12 +31,12 @@ public class BinarySearchTree<E extends Comparable<E>> {
         size++;
     }
     
-    /**
-     * Searches for and returns the matching element
+     /**
+     * searching through tree till match found then return
      * 
-     * @param  element  the element to be searched for
+     * @param element that's being searched/matched
      * 
-     * @return  the matching element
+     * @return matching element
      */
     public E search(E element) {
         if (isEmpty()) {
@@ -47,29 +46,32 @@ public class BinarySearchTree<E extends Comparable<E>> {
         }
     }
     
-    /**
-     * Removes and returns the matching element
+     /**
+     * Returns the number of elements in the binary search tree
      * 
-     * @param  the element to be removed
-     * 
-     * @return the matching element;
+     * @return the size of the binary search tree
      */
-    public E remove(E element) {
-        if (isEmpty()) { // empty
-            return null;
-        } else if (search(element) == null) { // elem not in tree
-            return null;
+    public int size() {
+        return size;
+    }
+    
+     /**
+     * Returns true if BST empty, false if not 
+     * 
+     * @return false/true 
+     */
+    public boolean isEmpty() {
+        if (size != 0) {
+            return false;
         } else {
-            root = root.remove(element);
-            size--;
-            return element;
+            return true;
         }
     }
     
-    /**
+      /**
      * Returns the minimum element in the binary serch tree
      * 
-     * @return minimum element in the binary search tree
+     * @return min element in the BST
      */
     public E getMin() {
         if (isEmpty()) {
@@ -82,7 +84,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
     /**
      * Return the maximun element in the binary search tree
      * 
-     * @return maximum element in the binary search tree
+     * @return max element in the BST
      */
     public E getMax() {
         if (isEmpty()) {
@@ -93,15 +95,15 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
     
     /**
-     * Returns the number of levels in the binary search tree
+     * Returns the number of levels in the BSt
      * 
-     * @return the number of levels in the tree
+     * @return the # of levels in the tree
      */
     public int getDepth() {
         if (isEmpty()) {
             return 0;
         } else {
-            return root.getDepth() + 1;
+            return root.getDepth();
         }
     }
     
@@ -131,44 +133,44 @@ public class BinarySearchTree<E extends Comparable<E>> {
         }
     }
     
-    /**
-     * Indicated weather the binary search tree is empty
+     /**
+     * Removes element and returns the matched result
      * 
-     * @return is the binary search tree empty
-     */
-    public boolean isEmpty() {
-        return root == null;
-    }
-    
-    /**
-     * Returns the number of elements in the binary search tree
+     * @param  element being removed
      * 
-     * @return the size of the binary search tree
+     * @return element matched
      */
-    public int size() {
-        return size;
+    public E remove(E element) {
+        if (isEmpty()) { // empty
+            return null;
+        } else if (search(element) == null) { 
+            return null;
+        } else {
+            root = root.remove(element);
+            size--;
+            return element;
+        }
     }
     
     /**
      * Prints all of the elements in order smallest to largest
      * 
-     * @return  a string of all the elements lowest to highest 
-     * seperated by commas
+     * @return  a string of all the elements(smallest - largest)
      */
-    public String toString() {
-        if (isEmpty()) {
-            return "";
-        } else {
-            return root.toString();
-        }
-    }
-    
-    /**
-     * Mr murphy method; Prints the structure of the tree
-     */
-    public void printTree(int i) {
-        if (!isEmpty()) {
-            root.printTree(i);
-        }
-    }
+     public String toString() {
+         if (isEmpty()) {
+             return "";
+         } else {
+             return root.toString();
+         }
+     }
+     
+     /**
+      * Mehtod given by teahcer
+      */
+     public void printTree(int i) {
+         if (!isEmpty()) {
+             root.printTree(i);
+         }
+     }
 }
